@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Choose a button</title>
+  <style>
+    .button {
+      width: 100px;
+      height: 30px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="button-container"></div>
+  <script>
+    function insertButtons() {
+      var numButtons = 8;
+      var container = document.getElementById('button-container');
+      var correctIndex = Math.floor(Math.random() * numButtons);
+      for (var i = 0; i < numButtons; i++) {
+        var button = document.createElement('button');
+        button.className = 'button';
+        button.textContent = 'Click me';
+        if (i === correctIndex) {
+          button.addEventListener('click', hit);
+        } else {
+          button.addEventListener('click', miss);
+        }
+        container.appendChild(button);
+      }
+    }
+
+    function hit() {
+      var buttons = document.getElementsByClassName('button');
+      while (buttons.length > 0) {
+        buttons[0].parentNode.removeChild(buttons[0]);
+      }
+      var label = document.createElement('label');
+      label.textContent = 'You hit it!';
+      document.body.appendChild(label);
+      setTimeout(restart, 5000);
+    }
+
+    function restart() {
+      var labels = document.getElementsByTagName('label');
+      while (labels.length > 0) {
+        labels[0].parentNode.removeChild(labels[0]);
+      }
+      insertButtons();
+    }
+
+    function miss() {
+      var buttons = document.getElementsByClassName('button');
+      while (buttons.length > 0) {
+        buttons[0].parentNode.removeChild(buttons[0]);
+      }
+      var label = document.createElement('label');
+      label.textContent = 'Missed it!';
+      document.body.appendChild(label);
+      setTimeout(restart, 5000);
+    }
+
+    insertButtons();
+  </script>
+</body>
+</html>
