@@ -3,15 +3,22 @@
 <head>
   <title>Choose a button</title>
   <style>
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+
     .button {
-      width: 100px;
-      height: 30px;
-      margin: 5px;
+      width: 200px;
+      height: 60px;
+      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
-  <div id="button-container"></div>
+  <div class="button-container" id="button-container"></div>
   <script>
     function insertButtons() {
       var numButtons = 8;
